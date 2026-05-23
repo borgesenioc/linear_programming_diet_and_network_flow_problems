@@ -2,14 +2,17 @@
 # run pip install pandas
 
 import pandas as pd
+from pathlib import Path
 
 from pulp import *
 
 model = LpProblem("DietProblem", LpMinimize)
 
-df_foods = pd.read_csv("diet_food.csv")
-df_nutrients = pd.read_csv("diet_nutrients.csv")
-df_food_nutrients = pd.read_csv("diet_food_nutrients.csv")
+BASE_DIR = Path(__file__).resolve().parent
+
+df_foods = pd.read_csv(BASE_DIR / "diet_food.csv")
+df_nutrients = pd.read_csv(BASE_DIR / "diet_nutrients.csv")
+df_food_nutrients = pd.read_csv(BASE_DIR / "diet_food_nutrients.csv")
 
 num_foods = df_foods.shape[0]
 
